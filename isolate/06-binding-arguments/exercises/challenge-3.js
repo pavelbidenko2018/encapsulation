@@ -2,7 +2,22 @@
 
 // psst. use the debugger!
 
-const obj = {};
+const obj = {
+    current: 0,
+    method: function(firstArg, secondArg) {
+        let temp = this.current;
+        let res = 0;
+        if (temp === 0) {
+            this.current += firstArg + secondArg;
+            res = firstArg - secondArg + temp;
+        } else {
+            this.current += secondArg;
+            res = firstArg - secondArg + temp - 1;
+        }
+
+        return res;
+    }
+};
 
 // don't change the code below this line
 const boundMethod = obj.method.bind(obj, 1);

@@ -2,7 +2,14 @@
 
 // this one is extra tricky
 
-const obj = {};
+const obj = {
+    current: 0,
+    method: function(firstArg, secondArg) {
+        let temp = this.current;
+        this.current += firstArg + secondArg;
+        return temp - secondArg - firstArg;
+    }
+};
 
 // don't change the code below this line
 const boundMethod = obj.method.bind(obj, -1);
@@ -27,4 +34,3 @@ const test3a = obj.current === 3;
 const test3b = result3 === 3;
 console.assert(test3a, 'Test 3.A');
 console.assert(test3b, 'Test 3.B');
-
