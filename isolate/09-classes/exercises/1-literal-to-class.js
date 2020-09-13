@@ -1,31 +1,44 @@
 // the challenge
 
 const literalA = {
-  numbers: [-1, 1, 0, -2, 2],
-  get evens() {
-    return this.numbers.filter(num => num % 2 === 0);
-  },
-  get odds() {
-    return this.numbers.filter(num => num % 2 !== 0);
-  }
+    numbers: [-1, 1, 0, -2, 2],
+    get evens() {
+        return this.numbers.filter(num => num % 2 === 0);
+    },
+    get odds() {
+        return this.numbers.filter(num => num % 2 !== 0);
+    }
 };
 
 const literalB = {
-  numbers: [3, 67, -21, 6, -4],
-  get evens() {
-    return this.numbers.filter(num => num % 2 === 0);
-  },
-  get odds() {
-    return this.numbers.filter(num => num % 2 !== 0);
-  }
+    numbers: [3, 67, -21, 6, -4],
+    get evens() {
+        return this.numbers.filter(num => num % 2 === 0);
+    },
+    get odds() {
+        return this.numbers.filter(num => num % 2 !== 0);
+    }
 };
 
 // the solution
 
-class EvenOdd { };
+class EvenOdd {
+    constructor(numbers) {
+        this.numbers = numbers;
+    };
 
-const instanceA = _;
-const instanceB = _;
+    get evens() {
+        return this.numbers.filter(num => num % 2 === 0);
+    };
+
+    get odds() {
+        return this.numbers.filter(num => num % 2 !== 0);
+    }
+
+};
+
+const instanceA = new EvenOdd([-1, 1, 0, -2, 2]);
+const instanceB = new EvenOdd([3, 67, -21, 6, -4]);
 
 // the tests
 

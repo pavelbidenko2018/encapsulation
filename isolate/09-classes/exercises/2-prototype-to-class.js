@@ -1,18 +1,47 @@
 'use strict';
 
 const MaxMinPrototype = {
-  get spread() {
-    return this.state.max - this.state.min;
-  },
-  addNumber(newNum) {
-    // ... code ...
-  }
+    get spread() {
+        return this.state.max - this.state.min;
+    },
+    addNumber(newNum) {
+        // ... code ...
+    }
 };
 
 // write the class
 //  hint: state ---> { min: 'number', max: 'number' }
 
 class MaxMin {
+
+    state = {
+        min: Infinity,
+        max: -Infinity
+
+    };
+
+    constructor() {
+        this.min = 0;
+        this.max = 0;
+    }
+
+    addNumber(newNum) {
+
+        if (this.max === 0) {
+            this.max += newNum;
+            this.min += newNum;
+        } else {
+            this.max -= newNum;
+        }
+
+
+        this.state.min = this.min;
+        this.state.max = this.max;
+
+    }
+    get spread() {
+        return this.state.max - this.state.min;
+    }
 
 };
 
