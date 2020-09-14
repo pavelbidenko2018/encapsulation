@@ -14,31 +14,29 @@ const MaxMinPrototype = {
 
 class MaxMin {
 
-    state = {
-        min: Infinity,
-        max: -Infinity
+    state = {};
 
-    };
-
-    constructor() {
-        this.min = 0;
-        this.max = 0;
+    constructor(min = Infinity, max = -Infinity) {
+        this.state.min = min;
+        this.state.max = max;
     }
 
     addNumber(newNum) {
 
-        if (this.max === 0) {
-            this.max += newNum;
-            this.min += newNum;
-        } else {
-            this.max -= newNum;
+        if (this.state.min === Infinity & this.state.max === -Infinity) {
+            this.state.min = newNum;
+            this.state.max = newNum;
+            return;
         }
 
-
-        this.state.min = this.min;
-        this.state.max = this.max;
-
+        if (this.state.max === 0 & this.state.min === 0) {
+            this.state.min = this.state.min + newNum;
+        } else if (this.state.max < 0) {
+            this.state.max -= newNum;
+        }
     }
+
+
     get spread() {
         return this.state.max - this.state.min;
     }

@@ -4,6 +4,29 @@
 //  hint: state should be an object of key/value pairs
 
 class EntriesManager {
+    entries = {};
+
+    constructor(entries = {}) {
+        this.entries = entries;
+    }
+
+    write(key, value) {
+        this.entries[key] = value;
+    }
+
+    read(key) {
+        let res = this.entries[key];
+        if (res === undefined) throw new TypeError(`no key: ${key}`);
+        return res;
+    }
+
+    remove(key) {
+        if (!this.entries[key])
+            return false;
+
+        delete this.entries[key];
+        return true;
+    }
 
 };
 
@@ -43,10 +66,10 @@ console.assert(test5b, 'Test 5.B');
 const test6a = instanceA.read('b') === 2;
 let test6b;
 try {
-  instanceB.read('b');
-  test6b = false;
+    instanceB.read('b');
+    test6b = false;
 } catch (err) {
-  test6b = err.message === 'no key: b';
+    test6b = err.message === 'no key: b';
 }
 console.assert(test6a, 'Test 6.A - read');
 console.assert(test6b, 'Test 6.B');
